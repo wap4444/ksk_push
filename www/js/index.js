@@ -63,7 +63,8 @@ rr=0;
           .handleNotificationOpened(function(jsonData) {
 rr=1;
 alert('1Закрыто'+ rr);
-var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
+var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
   })
               .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.None)
           .iOSSettings(iosSettings)

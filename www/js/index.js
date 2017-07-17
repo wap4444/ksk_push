@@ -62,7 +62,7 @@ rr=0;
           .handleNotificationReceived(didReceiveRemoteNotificationCallBack)
           .handleNotificationOpened(function(jsonData) {
 rr=1;
-alert('Закрыто'+ rr);
+alert('1Закрыто'+ rr);
 var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
   })
               .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.None)

@@ -67,11 +67,17 @@ var app = {
           })
           .handleNotificationOpened(function(jsonData) {
             alert("Notification opened: \n" +  jsonData.payload.title);
-        ,
           })
           .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
           .iOSSettings(iosSettings)
           .endInit();
+     
+         window.plugins.OneSignal.getIds(function(ids) {
+        document.getElementById("OneSignalUserId").innerHTML = "UserId: " + ids.userId;
+        document.getElementById("OneSignalPushToken").innerHTML = "PushToken: " + ids.pushToken;
+        console.log('getIds: ' + JSON.stringify(ids));
+        alert("userId = " + ids.userId + "\npushToken = " + ids.pushToken);
+    });
         
         //Call syncHashedEmail anywhere in your app if you have the user's email.
         //This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.

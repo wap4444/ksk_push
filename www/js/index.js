@@ -60,7 +60,11 @@ rr=0;
         window.plugins.OneSignal
           .startInit("82b9c889-5c3a-4526-abaf-271d6d269892")
           .handleNotificationReceived(didReceiveRemoteNotificationCallBack)
-          .handleNotificationOpened(didOpenRemoteNotificationCallBack)
+          .handleNotificationOpened(function(jsonData) {
+rr=1;
+alert('Закрыто'+ rr);
+var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+  })
               .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.None)
           .iOSSettings(iosSettings)
           .endInit();

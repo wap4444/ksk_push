@@ -66,8 +66,8 @@ var app = {
             console.log('Did I receive a notification: ' + JSON.stringify(jsonData));
           })
           .handleNotificationOpened(function(jsonData) {
-            alert("Notification opened: \n" + JSON.stringify(jsonData));
-            console.log('didOpenRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+            alert("Notification opened: \n" +  jsonData.payload.title);
+        ,
           })
           .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
           .iOSSettings(iosSettings)

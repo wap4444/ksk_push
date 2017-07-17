@@ -47,7 +47,7 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-var rr=0;
+var rr = 0;
      
      
      function didReceiveRemoteNotificationCallBack(jsonData) {   
@@ -57,6 +57,7 @@ var rr=0;
 
 function didOpenRemoteNotificationCallBack (jsonData) {
  rr=1;
+ alert('Open rr='+rr);
  var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); 
      var ref = cordova.InAppBrowser.open(newdata.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
 }

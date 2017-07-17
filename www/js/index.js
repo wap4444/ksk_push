@@ -61,21 +61,16 @@ var app = {
 
         window.plugins.OneSignal
           .startInit("82b9c889-5c3a-4526-abaf-271d6d269892")
-          .handleNotificationReceived(function(jsonData) {
-            alert("Notification received: \n" + jsonData.payload.title);
-          })
-          .handleNotificationOpened(function(jsonData) {
-            alert("Notification opened: \n" +  jsonData.payload.title);
-          })
-          .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
+          .handleNotificationReceived(didReceiveRemoteNotificationCallBack)
+          .handleNotificationOpened(didOpenRemoteNotificationCallBack)
+              .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.None)
           .iOSSettings(iosSettings)
           .endInit();
      
-         window.plugins.OneSignal.getIds(function(ids) {
-        document.getElementById("OneSignalUserId").innerHTML = "UserId: " + ids.userId;
-        document.getElementById("OneSignalPushToken").innerHTML = "PushToken: " + ids.pushToken;
-        console.log('getIds: ' + JSON.stringify(ids));
-        alert("userId = " + ids.userId + "\npushToken = " + ids.pushToken);
+     
+window.plugins.OneSignal.getIds(function(ids) {
+ipush = ids.userId;
+var ref = cordova.InAppBrowser.open('http://mirada.kz/test/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     });
         
         //Call syncHashedEmail anywhere in your app if you have the user's email.
@@ -148,6 +143,15 @@ function postNotification() {
 function setSubscription() {
     window.plugins.OneSignal.setSubscription(false);
 }
+
+function didReceiveRemoteNotificationCallBack(jsonData) {   
+     var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+    }
+
+function didOpenRemoteNotificationCallBack (jsonData) {
+var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
+     var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+    }
 
 app.initialize();
 

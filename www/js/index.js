@@ -150,8 +150,8 @@ function didReceiveRemoteNotificationCallBack(jsonData) {
 function didOpenRemoteNotificationCallBack (jsonData) {
  rr=1;
  alert('Закрыто'+ rr);
-var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
-     var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+// var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); //
+     var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     }
 
 app.initialize();

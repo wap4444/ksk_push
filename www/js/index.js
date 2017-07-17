@@ -60,12 +60,7 @@ rr=0;
         window.plugins.OneSignal
           .startInit("82b9c889-5c3a-4526-abaf-271d6d269892")
           .handleNotificationReceived(didReceiveRemoteNotificationCallBack)
-          .handleNotificationOpened(function(jsonData) {
-rr=1;
-alert('1Закрыто'+ rr);
-var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
-var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-  })
+          .handleNotificationOpened(didOpenRemoteNotificationCallBack)
               .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.None)
           .iOSSettings(iosSettings)
           .endInit();
@@ -154,10 +149,9 @@ function didReceiveRemoteNotificationCallBack(jsonData) {
 
 function didOpenRemoteNotificationCallBack (jsonData) {
  rr=1;
- alert('Закрыто'+ rr);
-// var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); //
-     var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-    }
+ var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); 
+     var ref = cordova.InAppBrowser.open(newdata.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+}
 
 app.initialize();
 

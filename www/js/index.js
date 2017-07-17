@@ -65,11 +65,12 @@ rr=0;
           .iOSSettings(iosSettings)
           .endInit();
      
-     
+     if(rr=='0'){
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
 var ref = cordova.InAppBrowser.open('http://mirada.kz/test/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     });
+     }
         
         //Call syncHashedEmail anywhere in your app if you have the user's email.
         //This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
@@ -147,7 +148,8 @@ function didReceiveRemoteNotificationCallBack(jsonData) {
     }
 
 function didOpenRemoteNotificationCallBack (jsonData) {
- alert('Закрыто');
+ rr=1;
+ alert('Закрыто'+ rr);
 var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
      var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     }

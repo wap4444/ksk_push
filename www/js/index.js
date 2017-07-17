@@ -62,8 +62,7 @@ var app = {
         window.plugins.OneSignal
           .startInit("82b9c889-5c3a-4526-abaf-271d6d269892")
           .handleNotificationReceived(function(jsonData) {
-            alert("Notification received: \n" + JSON.stringify(jsonData));
-            console.log('Did I receive a notification: ' + JSON.stringify(jsonData));
+            alert("Notification received: \n" + jsonData.payload.title);
           })
           .handleNotificationOpened(function(jsonData) {
             alert("Notification opened: \n" +  jsonData.payload.title);

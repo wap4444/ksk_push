@@ -24,8 +24,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- var rrPush = 0;
 var app = {
+
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -42,6 +42,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 var rr = 0;
+var rrPush=0;
              var iosSettings = {};
         iosSettings["kOSSettingsKeyAutoPrompt"] = false;
         iosSettings["kOSSettingsKeyInAppLaunchURL"] = true;

@@ -52,6 +52,7 @@ var rr = 0;
     }
 
 function didOpenRemoteNotificationCallBack(jsonData) {
+ alert('Было убито');
     rr=1;  
     
    // Для Andori

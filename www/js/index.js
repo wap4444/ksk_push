@@ -47,7 +47,19 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-rr=0;
+var rr=0;
+     
+     
+     function didReceiveRemoteNotificationCallBack(jsonData) {   
+      rr=1;  
+     var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+    }
+
+function didOpenRemoteNotificationCallBack (jsonData) {
+ rr=1;
+ var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); 
+     var ref = cordova.InAppBrowser.open(newdata.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+}
         // OneSignal Initialization
         // Enable to debug issues.
         // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -65,12 +77,15 @@ rr=0;
           .iOSSettings(iosSettings)
           .endInit();
      
-     if(rr=='0'){
+ 
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
+if(rr=='1'){}
+else{
 var ref = cordova.InAppBrowser.open('http://mirada.kz/test/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-    });
-     }
+}
+});
+
         
         //Call syncHashedEmail anywhere in your app if you have the user's email.
         //This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
@@ -141,16 +156,6 @@ function postNotification() {
 
 function setSubscription() {
     window.plugins.OneSignal.setSubscription(false);
-}
-
-function didReceiveRemoteNotificationCallBack(jsonData) {   
-     var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-    }
-
-function didOpenRemoteNotificationCallBack (jsonData) {
- rr=1;
- var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); 
-     var ref = cordova.InAppBrowser.open(newdata.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
 }
 
 app.initialize();

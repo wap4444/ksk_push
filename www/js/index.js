@@ -47,9 +47,7 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-
+rr=0;
         // OneSignal Initialization
         // Enable to debug issues.
         // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -149,6 +147,7 @@ function didReceiveRemoteNotificationCallBack(jsonData) {
     }
 
 function didOpenRemoteNotificationCallBack (jsonData) {
+ alert('Закрыто');
 var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
      var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     }

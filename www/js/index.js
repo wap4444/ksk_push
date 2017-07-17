@@ -74,8 +74,7 @@ var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,tool
           .iOSSettings(iosSettings)
           .endInit();
      
-
-
+function func() {
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
          if(rr=='1'){}
@@ -83,6 +82,12 @@ ipush = ids.userId;
 var ref = cordova.InAppBrowser.open('http://top-star.kz/fr7/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
           }
           });
+}
+
+setTimeout(func, 1000);
+
+     
+
 
     }
 };

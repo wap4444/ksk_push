@@ -13,6 +13,7 @@
     
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.0" />
+    <plugin name="cordova-plugin-inappbrowser"        source="npm" spec="~1.3.0" />
     
     <access origin="*" />
     <allow-intent href="http://*/*" />

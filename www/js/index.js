@@ -58,7 +58,6 @@ function didOpenRemoteNotificationCallBack(jsonData) {
    // Для Andori
 var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
 var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-break;
   //  Для Iphone
     //  var ref = cordova.InAppBrowser.open(jsonData.notification.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
   

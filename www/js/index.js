@@ -54,6 +54,7 @@ var rr = 0;
 
 function didOpenRemoteNotificationCallBack(jsonData) {
 rr=1;
+    ref.close();
 // Для Andori
 var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
 alert(newdata.ssylka);

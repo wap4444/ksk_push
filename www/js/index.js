@@ -43,23 +43,20 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 var rr = 0;
-var rrPush=0;
-             var iosSettings = {};
+        var iosSettings = {};
         iosSettings["kOSSettingsKeyAutoPrompt"] = false;
         iosSettings["kOSSettingsKeyInAppLaunchURL"] = true;
      
      function didReceiveRemoteNotificationCallBack(jsonData) {   
-      rr=1;  rrPush=1;
+      rr=1;
      var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     }
 
 function didOpenRemoteNotificationCallBack(jsonData) {
-
-rr=1; rrPush=1;
-    
+rr=1;
 // Для Andori
 var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
-    alert(newdata.ssylka+' rrPush='+rrPush);
+alert(newdata.ssylka);
 var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
  //  Для Iphone
  //  var ref = cordova.InAppBrowser.open(jsonData.notification.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
@@ -80,7 +77,7 @@ var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,tool
 
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
-if(rrPush=='1'){}else{
+if(rr=='1'){}else{
 var ref = cordova.InAppBrowser.open('http://top-star.kz/fr7/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
 }
 });

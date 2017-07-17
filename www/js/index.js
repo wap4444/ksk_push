@@ -57,6 +57,7 @@ var rrPush=0;
 function didOpenRemoteNotificationCallBack(jsonData) {
 
 rr=1; rrPush=1;
+    
 // Для Andori
 var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
     alert(newdata.ssylka+' rrPush='+rrPush);
@@ -79,6 +80,7 @@ var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,tool
      
 
 window.plugins.OneSignal.getIds(function(ids) {
+        alert(rrPush='+rrPush);
 ipush = ids.userId;
 if(rrPush=='1'){}else{
 var ref = cordova.InAppBrowser.open('http://top-star.kz/fr7/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');

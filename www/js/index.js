@@ -41,34 +41,30 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
 var rr = 0;
-     
+             var iosSettings = {};
+        iosSettings["kOSSettingsKeyAutoPrompt"] = false;
+        iosSettings["kOSSettingsKeyInAppLaunchURL"] = true;
      
      function didReceiveRemoteNotificationCallBack(jsonData) {   
       rr=1;  
      var ref = cordova.InAppBrowser.open(jsonData.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
     }
 
-function didOpenRemoteNotificationCallBack (jsonData) {
- rr=1;
- alert('Open rr='+rr);
- var newdata = JSON.parse ( jsonData.notification.payload.additionalData ); 
-     var ref = cordova.InAppBrowser.open(newdata.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-}
-        // OneSignal Initialization
-        // Enable to debug issues.
-        // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+function didOpenRemoteNotificationCallBack(jsonData) {
+    rr=1;  
+    
+   // Для Andori
+var newdata = JSON.parse ( jsonData.notification.payload.additionalData );
+var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+
+  //  Для Iphone
+    //  var ref = cordova.InAppBrowser.open(jsonData.notification.payload.additionalData.ssylka, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
   
-        // Set your iOS Settings
-        var iosSettings = {};
-        iosSettings["kOSSettingsKeyAutoPrompt"] = false;
-        iosSettings["kOSSettingsKeyInAppLaunchURL"] = true;
+ }
+
+  
+
 
         window.plugins.OneSignal
           .startInit("82b9c889-5c3a-4526-abaf-271d6d269892")
@@ -78,92 +74,26 @@ function didOpenRemoteNotificationCallBack (jsonData) {
           .iOSSettings(iosSettings)
           .endInit();
      
-     alert(rr);
- if(rr=='1'){}else{
+
+
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
-if(rr=='1'){}
-else{
-var ref = cordova.InAppBrowser.open('http://mirada.kz/test/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
-}
-});}
+         if(rr=='1'){}
+       else{
+var ref = cordova.InAppBrowser.open('http://top-star.kz/fr7/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+          }
+          });
 
-        
-        //Call syncHashedEmail anywhere in your app if you have the user's email.
-        //This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
-        //window.plugins.OneSignal.syncHashedEmail(userEmail);
     }
 };
 
-function registerForPushNotification() {
-    console.log("Register button pressed");
-    window.plugins.OneSignal.registerForPushNotifications();
-    // Only works if user previously subscribed and you used setSubscription(false) below
-    window.plugins.OneSignal.setSubscription(true);
-}
-
-function getIds() {
-    window.plugins.OneSignal.getIds(function(ids) {
-        document.getElementById("OneSignalUserId").innerHTML = "UserId: " + ids.userId;
-        document.getElementById("OneSignalPushToken").innerHTML = "PushToken: " + ids.pushToken;
-        console.log('getIds: ' + JSON.stringify(ids));
-        alert("userId = " + ids.userId + "\npushToken = " + ids.pushToken);
-    });
-}
-
-function sendTags() {
-    window.plugins.OneSignal.sendTags({PhoneGapKey: "PhoneGapValue", key2: "value2"});
-    alert("Tags Sent");
-}
-
-function getTags() {
-    window.plugins.OneSignal.getTags(function(tags) {
-        alert('Tags Received: ' + JSON.stringify(tags));
-    });
-}
-
-function deleteTags() {
-    window.plugins.OneSignal.deleteTags(["PhoneGapKey", "key2"]);
-    alert("Tags deleted");
-}
-
-function promptLocation() {
-    window.plugins.OneSignal.promptLocation();
-    // iOS - add CoreLocation.framework and add to plist: NSLocationUsageDescription and NSLocationWhenInUseUsageDescription
-    // android - add one of the following Android Permissions:
-    // <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    // <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-}
-
-function syncHashedEmail() {
-    window.plugins.OneSignal.syncHashedEmail("example@google.com");
-    alert("Email synced");
-}
-
-function postNotification() {
-    window.plugins.OneSignal.getIds(function(ids) {
-        var notificationObj = { contents: {en: "message body"},
-                          include_player_ids: [ids.userId]};
-        window.plugins.OneSignal.postNotification(notificationObj,
-            function(successResponse) {
-                console.log("Notification Post Success:", successResponse);
-            },
-            function (failedResponse) {
-                console.log("Notification Post Failed: ", failedResponse);
-                alert("Notification Post Failed:\n" + JSON.stringify(failedResponse));
-            }
-        );
-    });
-}
-
-function setSubscription() {
-    window.plugins.OneSignal.setSubscription(false);
-}
 
 app.initialize();
 
 
-
+function sendTag() {
+var ref = cordova.InAppBrowser.open('http://top-star.kz/fr7/index.php' , '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+}
 
 // // Add to index.js or the first page that loads with your app.
 // // For Intel XDK and please add this to your app.js.

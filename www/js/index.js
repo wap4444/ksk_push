@@ -37,12 +37,14 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
 var rr = 0;
 var rrPush=0;
+    },
+
+    
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+
              var iosSettings = {};
         iosSettings["kOSSettingsKeyAutoPrompt"] = false;
         iosSettings["kOSSettingsKeyInAppLaunchURL"] = true;

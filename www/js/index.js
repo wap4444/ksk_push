@@ -77,14 +77,15 @@ function didOpenRemoteNotificationCallBack (jsonData) {
           .iOSSettings(iosSettings)
           .endInit();
      
- 
+     alert(rr);
+ if(rr=='1'){}else{
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
 if(rr=='1'){}
 else{
 var ref = cordova.InAppBrowser.open('http://mirada.kz/test/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
 }
-});
+});}
 
         
         //Call syncHashedEmail anywhere in your app if you have the user's email.

@@ -78,9 +78,20 @@ var ref = cordova.InAppBrowser.open(newdata.ssylka , '_blank', 'location=no,tool
 
 window.plugins.OneSignal.getIds(function(ids) {
 ipush = ids.userId;
-if(rr=='1'){}else{
-var ref = cordova.InAppBrowser.open('http://top-star.kz/fr7/index.php?ipush='+ipush, '_blank', 'location=no,toolbar=no,disallowoverscroll=yes');
+    
+    $.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/kskSpisok.php',
+success: function(data){
+kskObslDoma = JSON.parse(data);
+ $.each(kskObslDoma, function(key1, data) {
+	$('body').append(kskObslDoma[key1].name+'<br>');
+	
+});
+},
+error: function(XMLHttpRequest, textStatus, errorThrown){
 }
+});
+    
+
 });
 
 

@@ -33,37 +33,198 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-    </head>
-    <body>
-        <h1>OneSignal Example</h1>
-        
-        <form>
-            <input type="button" value="Register For Push Notifications iOS" onclick="registerForPushNotification()" />
-            <br>
-            <input type="button" value="Get Ids" onclick="getIds()" />
-            <br>
-            <input type="button" value="Send Tags" onclick="sendTags()" />
-            <br>
-            <input type="button" value="Get Tags" onclick="getTags()" />
-            <br>
-            <input type="button" value="Delete Tags" onclick="deleteTags()" />
-            <br>
-            <input type="button" value="Prompt Location" onclick="promptLocation()" />
-            <br>
-            <input type="button" value="Sync Hashed Email" onclick="syncHashedEmail()" />
-            <br>
-            <input type="button" value="Post Notification" onclick="postNotification()" />
-            <br>
-            <input type="button" value="Set Subscription(false)" onclick="setSubscription()" />
-            <br>
-        </form>
-        
-        <p id="OneSignalUserId"></p>
-        <p style="word-break: break-all;" id="OneSignalPushToken"></p>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+ <title>Умный дом</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+	  </head>
+  <body  class=" theme-yellow">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal" style="background:url('img/menu_fon.jpg');">
+      <div class="content-block">
+ <div class="content-block-title" style="color:rgb(64, 172, 255);">МЕНЮ</div>
+<div class="list-block">
+<ul style="background:rgba(255, 255, 255, 0);">
+
+<li><a href="rega.html" class="item-link close-panel regaStart">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Регистрация</div>
+</div>
+</div></a></li>
+
+<li><a href="ksk.html" class="item-link close-panel">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Мое КСК</div>
+</div>
+</div></a></li>
+<li><a href="dom/dom.html" class="item-link close-panel">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Мой дом</div>
+</div>
+</div></a></li>
+<li><a href="zayvki/zay.html" class="item-link close-panel">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Мои заявки</div>
+</div>
+</div></a></li>
+<li><a href="pol.html" class="item-link close-panel">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Полезное</div>
+</div>
+</div></a></li>
+<li><a href="blank.html" class="item-link close-panel">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Вопросы-Ответы</div>
+</div>
+</div></a></li>
+<li><a href="cont.html" class="item-link close-panel">
+<div class="item-content">
+<div class="item-media"><i class="icon icon-f7"></i></div>
+<div class="item-inner">
+<div class="item-title" style="color:rgb(64, 172, 255);">Контакты</div>
+</div>
+</div></a></li>
+</ul>
+      <div class="list-block-label" style="color:rgb(64, 172, 255);">2017 "BFGroup"</div>
+</div>
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar" style=" font-weight:bold;   background: #507299;">
+          <div class="navbar-inner">
+		    <div class="left">
+              <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+            </div>
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">Умный дом</div>
+            <div class="right">
+              <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only langChoice"></a>
+            </div>
+          </div>
         </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+  
+
+  
+  <!-- <div class="card facebook-card"> -->
+  <!-- <div class="card-header no-border"> -->
+    <!-- <div>Добро пожаловать в Умный Дом</div> -->
+  <!-- </div> -->
+  <!-- <div class="card-content"><img src="img/7466337.jpg" width="100%"></div> -->
+<!-- </div> -->
+
+
+    <div class="card">
+  <div class="card-header">Обновлен раздел: Контакты</div>
+  <div class="card-content">
+    <div class="card-content-inner">Обновлен раздел "Контакы". Добавлена возможность звонка<hr>
+	12.07.2017 11:59
+	</div>
+  </div>
+</div>
+
+    <div class="card">
+  <div class="card-header">Добавлен раздел: Выбор языка</div>
+  <div class="card-content">
+    <div class="card-content-inner">Добавлена возможность выбора языка(Казахский, Русский)<hr>
+	12.07.2017 10:27
+	</div>
+  </div>
+</div>
+
+    <div class="card">
+  <div class="card-header">Добавлен раздел: Лента</div>
+  <div class="card-content">
+    <div class="card-content-inner">Создана лента для просмотра новостей, новостей Вашего КСК, уведомлений по Вашему дому, уведомлений о предстоящих ремонтных работах и т.д.<hr>
+	12.07.2017 6:30
+	</div>
+  </div>
+</div>
+      
+<div class="card">
+  <div class="card-header">Добавлен раздел: Полезное</div>
+  <div class="card-content">
+    <div class="card-content-inner">Обновлен раздел "Полезное", теперь возможно получить доступ ко всем КСК<hr>
+	11.07.2017 16:30
+	</div>
+  </div>
+</div>
+      
+<div class="card">
+  <div class="card-header">Новый раздел: Мои заявки</div>
+  <div class="card-content">
+    <div class="card-content-inner">Добавлен раздел "Мои заявки", где мы можете отправить заявку в Ваше КСК<hr>
+	10.07.2017 12:31
+	</div>
+  </div>
+
+</div>
+      
+<div class="card">
+  <div class="card-header">Новый раздел: Мое КСК</div>
+  <div class="card-content">
+    <div class="card-content-inner">Создан раздел для жителей "Мое КСК", где Вы можете получить доступ ко всей информации Вашего КСК<hr>
+	10.07.2017 09:30	</div>
+  </div>
+
+</div>
+      
+<div class="card">
+  <div class="card-header">Новый раздел: Контакты</div>
+  <div class="card-content">
+    <div class="card-content-inner">Добавлен раздел "Контакты", где вы сможете найти полезные контакты<hr>
+	09.07.2017 12:27</div>
+  </div>
+</div>
+      
+
+  
+  
+  
+  
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Toolbar-->
+        <!-- <div class="toolbar"> -->
+          <!-- <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div> -->
+        <!-- </div> -->
+      </div>
+    </div>
         
         <script type="text/javascript" src="cordova.js"></script>
           <script type="text/javascript" src="jquery-latest.js"></script>
@@ -71,6 +232,11 @@
         <script type="text/javascript">
             app.initialize();
         </script>
+     
+       <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
         
     </body>
 </html>

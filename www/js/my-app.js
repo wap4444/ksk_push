@@ -85,7 +85,7 @@ myApp.onPageInit('about', function (page) {
 });
 
 myApp.onPageInit('pol', function (page) {
-$.ajax({type: 'POST',url: 'api/kskSpisok.php',
+$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/kskSpisok.php',
 success: function(data){
 kskObslDoma = JSON.parse(data);
  $.each(kskObslDoma, function(key1, data) {
@@ -106,7 +106,7 @@ error: function(XMLHttpRequest, textStatus, errorThrown){
 
 myApp.onPageInit('pol_ksk', function (page) {
 		var kskId = page.query.kskId;
-$.ajax({type: 'POST',url: 'api/kskInfo.php',data:{kskId: kskId},
+$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/kskInfo.php',data:{kskId: kskId},
 success: function(data){
 kskObslDoma = JSON.parse(data);
 $('#pol_ksk_name').html(kskObslDoma[0].name);
@@ -120,7 +120,7 @@ error: function(XMLHttpRequest, textStatus, errorThrown){
 
 myApp.onPageInit('rega', function (page) {
 	$('#selectStreet').empty();
-$.ajax({type: 'POST',url: 'api/regaSelectStreet.php',
+$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/regaSelectStreet.php',
 success: function(data){
 kskObslDoma = JSON.parse(data);
  $.each(kskObslDoma, function(key1, data) {
@@ -141,7 +141,7 @@ $('.selectStreet1').on('click', function () {
 	localStorage.streetName=streetName;
 	$('.regaTitle').html(streetName);
 	$('#selectStreet').empty();
-	$.ajax({type: 'POST',url: 'api/regaSelectHome.php',data:{streetId:streetId},
+	$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/regaSelectHome.php',data:{streetId:streetId},
 success: function(data1){
 	spisDoma = JSON.parse(data1);
 	 $.each(spisDoma, function(key1, data) {
@@ -177,7 +177,7 @@ $('#regaGo').on('click', function () {
 	if(!regaName || !regaKv || !regaPhone){
 		myApp.alert('Заполните все данные');
 	}else{
-$.ajax({type: 'POST',url: 'api/regaGo.php',data:{regaName: regaName,regaKv:regaKv,regaPhone:regaPhone,homeId:localStorage.homeId,streetId:localStorage.streetId},
+$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/regaGo.php',data:{regaName: regaName,regaKv:regaKv,regaPhone:regaPhone,homeId:localStorage.homeId,streetId:localStorage.streetId},
 success: function(data){
 userInfo = JSON.parse(data);
 localStorage.userName=userInfo[0].name;
@@ -203,7 +203,7 @@ myApp.onPageInit('moe_ksk', function (page) {
 myApp.alert('Пройдите регистрацию', function () {mainView.router.back();});
 
 	}else{
-		$.ajax({type: 'POST',url: 'api/kskInfo.php',data:{kskId: localStorage.userKskId},
+		$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/kskInfo.php',data:{kskId: localStorage.userKskId},
 success: function(data){
 kskObslDoma = JSON.parse(data);
 $('#moe_ksk_name').html(kskObslDoma[0].name);
@@ -214,7 +214,7 @@ error: function(XMLHttpRequest, textStatus, errorThrown){}
 });
 
 myApp.onPageInit('moe_ksk_in', function (page) {
-$.ajax({type: 'POST',url: 'api/kskInfo.php',data:{kskId: localStorage.userKskId},
+$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/kskInfo.php',data:{kskId: localStorage.userKskId},
 success: function(data){
 kskObslDoma = JSON.parse(data);
 $('#moe_ksk_name1').html(kskObslDoma[0].name);
@@ -245,7 +245,7 @@ myApp.alert('Пройдите регистрацию', function () {mainView.rou
 	function get_zay_sp(){
 		
 		 $('#moi_zay').empty();
-$.ajax({type: 'POST',url: 'api/zay_sp.php',data:{userId:localStorage.userId},
+$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/zay_sp.php',data:{userId:localStorage.userId},
 success: function(data){
 zay = JSON.parse(data);
  $.each(zay, function(key1, data) {
@@ -275,7 +275,7 @@ tema=$$('#tema').val();textar=$$('#textar').val();
 $.ajax(
     {
             type: 'POST',
-            url: 'addZ.php',
+            url: 'http://mirada.kz/project_ksk/addZ.php',
 			data: {tema:tema,textar:textar,homeId: localStorage.homeId,userId:localStorage.userId,	kskId:localStorage.userKskId	},
             success: function(dataInfo){
 myApp.alert('Заявка отправлена! Номер заявки '+dataInfo,'Электронный КСК');
@@ -299,7 +299,7 @@ if(!localStorage.userKskId){
 myApp.alert('Пройдите регистрацию', function () {mainView.router.back();});
 }else{
 	$('#my_home_title').html(localStorage.streetName+', '+localStorage.homeName)
-	$.ajax({type: 'POST',url: 'api/my_home.php',data:{homeId: localStorage.homeId},
+	$.ajax({type: 'POST',url: 'http://mirada.kz/project_ksk/api/my_home.php',data:{homeId: localStorage.homeId},
 success: function(data){
 kskObslDoma = JSON.parse(data);
 if(kskObslDoma[0].problema=='1'){

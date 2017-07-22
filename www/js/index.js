@@ -37,17 +37,18 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+	 document.addEventListener("offline", onOffline, false);
+function onOffline() {
+alert('sssss');
+}
     }
 
 
     
     // Update DOM on a Received Event
     receivedEvent: function(id) {  
-	
-document.addEventListener("offline", onOffline, false);
-function onOffline() {
-alert('sssss');
-}
+
+
 	var rr = 0;
         var iosSettings = {};
         iosSettings["kOSSettingsKeyAutoPrompt"] = false;

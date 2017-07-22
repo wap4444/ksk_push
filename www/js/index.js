@@ -37,10 +37,6 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-	 document.addEventListener("offline", onOffline, false);
-function onOffline() {
-alert('sssss');
-}
     }
 
 

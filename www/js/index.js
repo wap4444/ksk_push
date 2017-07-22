@@ -39,7 +39,7 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
     },
-function onOffline() {
+onOffline: function () {
 alert('NO DATA');
 }
 

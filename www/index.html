@@ -231,6 +231,11 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
+		
+document.addEventListener("offline", onOffline, false);
+function onOffline() {
+alert('sssss');
+}
         </script>
      
        <!-- Path to Framework7 Library JS-->

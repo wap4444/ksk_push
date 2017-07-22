@@ -29,7 +29,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-	document.addEventListener("offline", onOffline, false);
+	document.addEventListener('offline', onOffline, false);
     },
 
     // deviceready Event Handler
@@ -38,15 +38,16 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-    },
-onOffline: function () {
-alert('NO DATA');
-}
+    }
 
 
     
     // Update DOM on a Received Event
     receivedEvent: function(id) {  
+	
+function onOffline() {
+alert('NO DATA');
+}
 	var rr = 0;
         var iosSettings = {};
         iosSettings["kOSSettingsKeyAutoPrompt"] = false;

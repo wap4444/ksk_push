@@ -44,6 +44,13 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {  
 	
+	function onOffline() {
+  alert('Off');
+}
+	document.addEventListener("offline", onOffline, false);
+
+
+	
 	
 function checkConnection() {
     var networkState = navigator.connection.type;
